@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "llm-mutation"
+version = "0.1.0"
+description = "Mutation testing for LLM prompts. Find the gaps in your eval suite before production does."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "Richmond Owusu Duah", email = "Rowusuduah@users.noreply.github.com" }
+]
+keywords = [
+    "ai", "llm", "mutation-testing", "prompt-testing", "eval",
+    "evaluation", "ci-cd", "anthropic", "testing", "llmops"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov",
+    "black",
+    "ruff",
+]
+
+[project.scripts]
+mutate = "llm_mutation:_cli_main"
+
+[project.urls]
+Homepage = "https://github.com/Rowusuduah/llm-mutation"
+Repository = "https://github.com/Rowusuduah/llm-mutation"
+Issues = "https://github.com/Rowusuduah/llm-mutation/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["llm_mutation"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
